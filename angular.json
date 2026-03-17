@@ -25,7 +25,11 @@
               }
             ],
             "styles": [
+              "node-modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
+            ],
+            "scripts": [
+              "node-modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {
