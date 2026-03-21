@@ -21,4 +21,8 @@ export class EmpleadosService {
   getAll () : Promise<IResponse> {
     return lastValueFrom(this.httpClient.get<IResponse>(this.baseUrl));
   }
+
+  getById(id: string | undefined) : Promise<IEmpleado> {
+    return lastValueFrom(this.httpClient.get<IEmpleado>(`${this.baseUrl}/${id}`))
+  }
 }

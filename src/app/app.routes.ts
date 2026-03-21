@@ -7,7 +7,7 @@ import { NuevoUsuarioComponent } from './pages/nuevo-usuario/nuevo-usuario.compo
 export const routes: Routes = [
     {path: "", pathMatch: 'full', component: HomeComponent},
     {path: "home", component: HomeComponent},
-    {path: "vista-usuario", component: VistaUsuarioComponent},
+    {path: "vista-usuario/:_id", component: VistaUsuarioComponent},
     {path: "nuevo-usuario", component:NuevoUsuarioComponent},
     {path:"**", component: Error404Component}
 ];

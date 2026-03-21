@@ -1,21 +1,21 @@
 <body class="d-flex justify-content-center align-items-center ">
     <section class="d-flex justify-content-center align-items-center m-3 p-4 w-50">
         <div class="px-3 d-flex justify-content-center">
-            <img class="img-fluid w-100" src="images\perfil-default.webp" alt="foto-perfil">
+            <img class="img-fluid w-100 rounded-circle" [src]="miEmpleado()?.image" alt="foto-perfil">
         </div>
 
         <div class="vr mx-4 border-dark"> </div>
 
         <div class="col-12 col-md-6 text-center text-md-center">
-            <h3 class="py-2">Nombre del usuario</h3>
-            <h3 class="py-2">Apellido del usuario</h3>
-            <p class="py-0"><b>Nombre del usuario:</b> username</p>
-            <p class="py-0"> <b>Email:</b> email.gmail.com</p>
+            <h3 class="py-0">{{miEmpleado()?.first_name}} </h3>
+            <h3 class="py-0">{{miEmpleado()?.last_name}}</h3>
+            <p class="py-0"><b>Nombre del usuario:</b> {{miEmpleado()?.username}}</p>
+            <p class="py-0"> <b>Email:</b> {{miEmpleado()?.email}}</p>
 
             <div>
                 <a class="btn border m-1">Eliminar</a>
                 <a class="btn border m-1">Actualizar</a>
-                <a class="btn border m-1">Volver a listado</a>
+                <a class="btn border m-1" [routerLink]="['/home']">Volver a listado</a>
             </div>
 
         </div>
