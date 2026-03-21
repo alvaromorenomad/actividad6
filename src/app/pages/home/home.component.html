@@ -2,7 +2,7 @@
   <div class="row g-3">
     
     @for(cardEmpleado of arrayEmpleados(); track cardEmpleado._id){
-          <app-card-usuario [miEmpleado]="cardEmpleado" [routerLink]="['/vistaUsuario']" class="col-12 col-md-6 col-lg-3"></app-card-usuario>
+          <app-card-usuario [miEmpleado]="cardEmpleado" class="col-12 col-md-6 col-lg-3"></app-card-usuario>
 
 
     }
