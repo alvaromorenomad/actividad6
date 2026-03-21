@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CardUsuarioComponent } from "../../components/card-usuario/card-usuario.component";
 import { RouterLink } from "@angular/router";
+import { IEmpleado } from '../../interfaces/iempleado.interface';
+import { EmpleadosService } from '../../services/empleados-service';
 
 @Component({
   selector: 'app-home',
@@ -9,5 +11,22 @@ import { RouterLink } from "@angular/router";
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
+  arrayEmpleados = signal<IEmpleado[]>([]);
+  empleadoService = inject(EmpleadosService); //esto trae todo el api, no solo empleados
+
+  ngOnInit() {
+    this.cargarEmpleados();
+  }
+
+  async cargarEmpleados() {
+    const response = await this.empleadoService.getAll();
+    this.arrayEmpleados.set(response.results);
+    
+  }
+
+
+
+
+
 
 }
