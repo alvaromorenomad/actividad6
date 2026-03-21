@@ -4,5 +4,9 @@
     flex-direction: column; 
   }
 
+  hr {
+    display: none;
+  }
+
 
 }
