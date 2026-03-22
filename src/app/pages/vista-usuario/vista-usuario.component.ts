@@ -16,7 +16,6 @@ export class VistaUsuarioComponent {
     
     ngOnInit() {
        this.cargarUsuarioId();
-       console.log(this._id)
     }
 
     async cargarUsuarioId() {

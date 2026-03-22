@@ -11,19 +11,27 @@
         <div class="col-lg-6 col-md-8">
             <form [formGroup]="userForm" (ngSubmit)="getDataForm()">
                 <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre Usuario</label>
-                    <input type="text" class="form-control" id="nombre" formControlName="nombre">
+                    <label for="first_name" class="form-label">Nombre Usuario</label>
+                    <input type="text" class="form-control" id="first_name" formControlName="first_name">
 
-                    @if (checkError('nombre', 'required')) {
+                    @if (checkError('first_name', 'required')) {
                         <p class="error-message">El nombre es obligatorio.</p>
                     }
                 </div>
                 
                 <div class="mb-3">
-                    <label for="apellido" class="form-label">Apellido Usuario</label>
-                    <input type="text" class="form-control" id="apellido" formControlName="apellido">
-                    @if (checkError('apellido', 'required')) {
+                    <label for="last_name" class="form-label">Apellido Usuario</label>
+                    <input type="text" class="form-control" id="last_name" formControlName="last_name">
+                    @if (checkError('last_name', 'required')) {
                         <p class="error-message">El apellido es obligatorio.</p>
+                    }
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Username</label>
+                    <input type="email" class="form-control" id="username" formControlName="username">
+                    @if (checkError('username', 'required')) {
+                        <p class="error-message">El alias de usuario es obligatorio.</p>
                     }
                 </div>
                 
@@ -39,12 +47,12 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="imagen" class="form-label">Imagen Usuario</label>
-                    <input type="text" class="form-control" id="imagen" formControlName="imagen">
-                    @if (checkError('imagen', 'required')) {
+                    <label for="image" class="form-label">Imagen Usuario</label>
+                    <input type="text" class="form-control" id="image" formControlName="image">
+                    @if (checkError('image', 'required')) {
                         <p class="error-message">La imagen es obligatoria.</p>
                     }
-                    @if (checkError('imagen', 'pattern')) {
+                    @if (checkError('image', 'pattern')) {
                         <p class="error-message">La imagen no es válida.</p>
                     }
 

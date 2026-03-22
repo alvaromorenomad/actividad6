@@ -12,15 +12,22 @@ import { EmpleadosService } from '../../services/empleados-service';
 })
 export class HomeComponent {
   arrayEmpleados = signal<IEmpleado[]>([]);
-  empleadoService = inject(EmpleadosService); //esto trae todo el api, no solo empleados
+  empleadoService = inject(EmpleadosService); 
 
   ngOnInit() {
     this.cargarEmpleados();
   }
 
   async cargarEmpleados() {
-    const response = await this.empleadoService.getAll();
-    this.arrayEmpleados.set(response.results);
+    try {
+      const response = await this.empleadoService.getAll();
+      this.arrayEmpleados.set(response.results)
+      console.log(this.arrayEmpleados())
+
+   }catch(error){
+      console.error(error)
+    }
+    
   }
 
 

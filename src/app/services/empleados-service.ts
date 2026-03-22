@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, input, signal } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { IEmpleado } from '../interfaces/iempleado.interface';
 
@@ -18,6 +18,9 @@ export class EmpleadosService {
   private httpClient = inject(HttpClient);
   private baseUrl = 'https://peticiones.online/api/users';
 
+  //falseado del pintado de usuarios nuevos en la home
+  fakeUserCreated = signal<IEmpleado[]>([])
+
   getAll () : Promise<IResponse> {
     return lastValueFrom(this.httpClient.get<IResponse>(this.baseUrl));
   }
@@ -25,4 +28,9 @@ export class EmpleadosService {
   getById(id: string | undefined) : Promise<IEmpleado> {
     return lastValueFrom(this.httpClient.get<IEmpleado>(`${this.baseUrl}/${id}`))
   }
+
+  insertUser(empleado : IEmpleado) : Promise<IEmpleado> {
+    return lastValueFrom(this.httpClient.post<IEmpleado>(this.baseUrl, empleado))
+  }
+
 }
