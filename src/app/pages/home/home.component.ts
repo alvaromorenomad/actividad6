@@ -21,7 +21,6 @@ export class HomeComponent {
   async cargarEmpleados() {
     const response = await this.empleadoService.getAll();
     this.arrayEmpleados.set(response.results);
-    
   }
 
 
