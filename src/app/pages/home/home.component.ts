@@ -22,12 +22,9 @@ export class HomeComponent {
     try {
       const response = await this.empleadoService.getAll();
       this.arrayEmpleados.set(response.results)
-      console.log(this.arrayEmpleados())
-
    }catch(error){
       console.error(error)
     }
-    
   }
 
 
