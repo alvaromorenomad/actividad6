@@ -33,4 +33,10 @@ export class EmpleadosService {
     return lastValueFrom(this.httpClient.post<IEmpleado>(this.baseUrl, empleado))
   }
 
+  updateUser(empleado: IEmpleado, id: string | undefined): Promise<IEmpleado>{
+    return lastValueFrom(this.httpClient.put<IEmpleado>(`${this.baseUrl}/${id}`, empleado))
+  }
+
+
+
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, output } from '@angular/core';
+import { Component, EventEmitter, inject, input, output, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EmpleadosService } from '../../services/empleados-service';
 import { IEmpleado } from '../../interfaces/iempleado.interface';
@@ -14,7 +14,9 @@ import { toast } from 'ngx-sonner';
 export class FormularioUsuarioComponent {
   empleadoService = inject(EmpleadosService);
   router = inject(Router);
-  //falseado del pintado de usuarios nuevos en la home. 
+  title : string = 'Nuevo usuario';
+  _id = input<string>()
+  miEmpleado = signal<IEmpleado | null>(null);
 
   
   userForm = new FormGroup({
@@ -25,7 +27,22 @@ export class FormularioUsuarioComponent {
     image: new FormControl('',[Validators.required,  Validators.pattern("^(https?:\\/\\/)?(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)\\.(jpg|jpeg|png|gif|webp|svg)$")])
   });
 
+  async ngOnInit(){
+    if (this._id()){
+      this.title = "Actualizar usuario"
+      this.miEmpleado.set(await this.empleadoService.getById(this._id()))
+      this.userForm.patchValue({
+        first_name: this.miEmpleado()?.first_name,
+        last_name: this.miEmpleado()?.last_name,
+        username: this.miEmpleado()?.username,
+        email: this.miEmpleado()?.email,
+        image: this.miEmpleado()?.image,
+      })
+    }
+  }
+
   getDataForm(){
+    
     if(this.userForm.valid){
       this.createUser(this.userForm.value)
       this.userForm.reset({
@@ -37,6 +54,7 @@ export class FormularioUsuarioComponent {
     }
     
   }
+
 
   async createUser (empleado : IEmpleado | any){
     try {
@@ -56,5 +74,7 @@ export class FormularioUsuarioComponent {
   checkError(controlName: string, errorName: string){
     return this.userForm.get(controlName)?.hasError(errorName) && this.userForm.get(controlName)?.touched;
   }
+
+
 
   }
