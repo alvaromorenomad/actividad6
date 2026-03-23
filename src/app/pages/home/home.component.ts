@@ -15,15 +15,35 @@ export class HomeComponent {
   empleadoService = inject(EmpleadosService); 
 
   ngOnInit() {
-    this.cargarEmpleados();
+    this.firstPage();
   }
 
-  async cargarEmpleados() {
+/*   async cargarEmpleados() {
     try {
       const response = await this.empleadoService.getAll();
       this.arrayEmpleados.set(response.results)
    }catch(error){
       console.error(error)
+    }
+  } */
+
+  //paginado
+
+  async firstPage (){
+    try{
+      const response = await this.empleadoService.getEmpleadosPerPage(1, 8);
+      this.arrayEmpleados.set(response.results)
+    }catch(error){
+      console.log(error)
+    }  
+  }
+
+  async secondPage(){
+    try{
+      const response = await this.empleadoService.getEmpleadosPerPage(2, 7);
+      this.arrayEmpleados.set(response.results)
+    }catch(error){
+      console.log(error)
     }
   }
 

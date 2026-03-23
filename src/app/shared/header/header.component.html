@@ -1,10 +1,10 @@
 <div class="p-3 d-flex justify-content-between border-bottom border-3 mx-5">
 
-    <img class="object-fit-contain btn" [routerLink]="['/home']" src="images\social.png" alt="logo-web">
+    <img class="object-fit-contain btn" [routerLink]="['']" src="images\social.png" alt="logo-web">
 
     <div class="d-flex justify-content-space px-2">
-        <a class="px-3 text-decoration-none fs-5 text text-danger" routerLinkActive="active" [routerLink]="['/home']">Home</a>
-        <a class="px-3 text-decoration-none fs-5 text text-danger" routerLinkActive="active" [routerLink]="['/nuevo-usuario']">Nuevo Usuario</a>  
+        <a class="px-3 text-decoration-none fs-5 text" routerLinkActive="activeHome" [routerLink]="['/home']">Home</a>
+        <a class="px-3 text-decoration-none fs-5 text" routerLinkActive="activeHome" [routerLink]="['/nuevo-usuario']">Nuevo Usuario</a>  
     </div>
     
 </div>
