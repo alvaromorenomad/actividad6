@@ -13,8 +13,8 @@
             <p class="py-0"> <b>Email:</b> {{miEmpleado()?.email}}</p>
 
             <div>
-                <a class="btn border m-1">Eliminar</a>
-                <a class="btn border m-1">Actualizar</a>
+                <a class="btn border m-1" (click)="deleteEmpleado(miEmpleado()?._id)">Eliminar</a>
+                <a class="btn border m-1" [routerLink]="['/actualiza-usuario', miEmpleado()?._id]">Actualizar</a>
                 <a class="btn border m-1" [routerLink]="['/home']">Volver a listado</a>
             </div>
 

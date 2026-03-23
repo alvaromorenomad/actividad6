@@ -34,6 +34,10 @@ export class EmpleadosService {
     return lastValueFrom(this.httpClient.put<IEmpleado>(`${this.baseUrl}/${id}`, empleado))
   }
 
+  deleteUserById(id: string | undefined){
+    return lastValueFrom(this.httpClient.delete<IEmpleado>(`${this.baseUrl}/${id}`))
+  }
+
 
 
 }
