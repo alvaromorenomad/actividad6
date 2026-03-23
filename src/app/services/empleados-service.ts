@@ -18,9 +18,6 @@ export class EmpleadosService {
   private httpClient = inject(HttpClient);
   private baseUrl = 'https://peticiones.online/api/users';
 
-  //falseado del pintado de usuarios nuevos en la home
-  fakeUserCreated = signal<IEmpleado[]>([])
-
   getAll () : Promise<IResponse> {
     return lastValueFrom(this.httpClient.get<IResponse>(this.baseUrl));
   }

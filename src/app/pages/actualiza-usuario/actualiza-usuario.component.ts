@@ -1,5 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { FormularioUsuarioComponent } from '../../components/formulario-usuario/formulario-usuario.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-actualiza-usuario',
@@ -8,9 +9,5 @@ import { FormularioUsuarioComponent } from '../../components/formulario-usuario/
   styleUrl: './actualiza-usuario.component.css',
 })
 export class ActualizaUsuarioComponent {
-    _id = input<string>()
 
-    ngOnInit()
-{
-  console.log(this._id())
-}}
+  }
