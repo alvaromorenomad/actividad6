@@ -38,6 +38,12 @@ export class EmpleadosService {
     return lastValueFrom(this.httpClient.delete<IEmpleado>(`${this.baseUrl}/${id}`))
   }
 
+  getEmpleadosPerPage (page: number = 1, per_page: number = 10) {
+      return lastValueFrom(this.httpClient.get<IResponse>(
+        `${this.baseUrl}?page=${page}&per_page=${per_page}`
+      )
+    );
+  }
 
 
 }
