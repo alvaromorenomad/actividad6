@@ -1,0 +1,41 @@
+<section class="border shadow d-flex flex-column align-items-center text-center mt-4">
+
+    <div >
+        <img class="w-75 rounded-circle p-3" [src]="miEmpleado()?.image
+        " alt="perfil">
+    </div>
+
+    <p>{{miEmpleado()?.first_name}} {{miEmpleado()?.last_name}}</p>
+
+    <div class="d-flex">
+
+        <a class="btn p-0 border-0 bg-transparent" [routerLink]="['/vista-usuario', miEmpleado()?._id]">
+            <div class="d-flex flex-column align-items-center text-center   mx-1">
+                <img class="icono" src="images\lupa.png" alt="lupa">
+                <p class="mt-2">Ver detalle</p>
+            </div> 
+        </a>
+        
+
+        <a class="btn p-0 border-0 bg-transparent" [routerLink]="['/actualiza-usuario', miEmpleado()?._id]">
+
+          <div class="d-flex flex-column align-items-center text-center mx-2">
+            <img class="icono" src="images\actualizar.png" alt="actualizar">
+            <p class="mt-2">Actualizar</p>
+          </div>   
+
+        </a>
+        
+        <button class="btn p-0 border-0 bg-transparent">
+
+            <div class="d-flex flex-column align-items-center text-center mx-2" (click)="deleteEmpleado(miEmpleado()?._id)">
+                <img class="icono" src="images\basura.png" alt="borrar">
+                <p class="mt-2">Borrar</p>
+            </div>  
+
+        </button>
+
+        
+    </div>
+        
+</section>

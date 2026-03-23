@@ -1,0 +1,12 @@
+@media (max-width: 1740px) {
+  section{
+    display: flex;
+    flex-direction: column; 
+  }
+
+  hr {
+    display: none;
+  }
+
+
+}

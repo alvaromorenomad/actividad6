@@ -1,0 +1,8 @@
+a {
+    cursor: pointer;
+    color: tomato
+}
+
+.activeHome {
+    color: black;
+}
