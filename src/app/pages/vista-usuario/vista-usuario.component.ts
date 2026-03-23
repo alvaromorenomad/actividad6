@@ -12,35 +12,48 @@ import { routes } from '../../app.routes';
   styleUrl: './vista-usuario.component.css',
 })
 export class VistaUsuarioComponent {
-    _id = input<string>();
-    empleadoService = inject(EmpleadosService)
-    miEmpleado = signal<IEmpleado | null>(null)
-    router = inject(Router)
-    
-    ngOnInit() {
-       this.cargarUsuarioId();
-    }
+  _id = input<string>();
+  empleadoService = inject(EmpleadosService)
+  miEmpleado = signal<IEmpleado | null>(null)
+  router = inject(Router)
+  
+  ngOnInit() {
+     this.cargarUsuarioId();
+  }
 
-    async cargarUsuarioId() {
-      try {
-        this.miEmpleado.set(await this.empleadoService.getById(this._id()))
-        
-      } catch (error){
-        console.log(error)
-      }
+  async cargarUsuarioId() {
+    try {
+      this.miEmpleado.set(await this.empleadoService.getById(this._id()))
+      
+    } catch (error){
+      console.log(error)
     }
+  }
 
-    async deleteEmpleado(id: string | undefined){
-          try{
-            const response = await this.empleadoService.deleteUserById(id);
-            if(response._id){
-              toast.error(`Empleado ${response.first_name} ha sido borrado`)
+  async deleteEmpleado(id: string | undefined){
+    if(id){
+      toast('¿Seguro que quieres eliminar?', {
+        action: {
+          label: 'Sí',
+          onClick: async () => {
+            try {
+              const userdeleted = await this.empleadoService.deleteUserById(id);
+              console.log(userdeleted)
+              toast.error(`Empleado ${userdeleted.first_name} ha  sido borrado`)
               this.router.navigate(['/home'])
-            }
             }catch (error){
-              toast.warning(`El usurio no ha podido ser borrado`)
+                toast.warning(`ID Inválido`)
+              }
             }
-        }
+          },
+          cancel: {
+            label: 'No'
+          }
+      });
+    }else{
+      toast.warning(`El usuario no ha podido ser borrado`)
+    }
+  }
 }
   
     

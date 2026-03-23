@@ -31,7 +31,7 @@ export class HomeComponent {
 
   async firstPage (){
     try{
-      const response = await this.empleadoService.getEmpleadosPerPage(1);
+      const response = await this.empleadoService.getEmpleadosPerPage(1, 8);
       this.arrayEmpleados.set(response.results)
     }catch(error){
       console.log(error)
@@ -40,7 +40,7 @@ export class HomeComponent {
 
   async secondPage(){
     try{
-      const response = await this.empleadoService.getEmpleadosPerPage(2);
+      const response = await this.empleadoService.getEmpleadosPerPage(2, 7);
       this.arrayEmpleados.set(response.results)
     }catch(error){
       console.log(error)
